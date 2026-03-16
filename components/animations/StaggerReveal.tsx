@@ -52,6 +52,7 @@ export default function StaggerReveal({
   const inView = useInView(ref, {
     once,
     margin: '-60px',
+    ...(introComplete === false ? { amount: 2 } : {}),
   })
 
   const isVisible     = introComplete && inView
