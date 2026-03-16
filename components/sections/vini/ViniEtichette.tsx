@@ -10,6 +10,9 @@ interface Vino {
   annata: string
   note: string
   latino: string
+  immagine: string
+  imgAlt: string
+  imgPosition?: string
 }
 
 const VINI: Vino[] = [
@@ -19,6 +22,9 @@ const VINI: Vino[] = [
     annata: 'MMXX',
     latino: 'Umbria Felix',
     note: "Il silenzio delle colline fermato nel bicchiere. Pietra, erba bagnata, un'ombra di viola selvatico al tramonto.",
+    immagine: '/images/calice-bokeh.jpg',
+    imgAlt: 'Calice con riflessi dorati e bokeh luminoso su sfondo scuro',
+    imgPosition: 'object-center',
   },
   {
     nome: 'Glacies',
@@ -26,6 +32,9 @@ const VINI: Vino[] = [
     annata: 'MMXXI',
     latino: 'Fines Foroiulii',
     note: "Freddo minerale come l'alba sulle Alpi. Cristallino, tagliente, eterno — come il ghiaccio che non si scioglie mai del tutto.",
+    immagine: '/images/calice-candela.jpg',
+    imgAlt: 'Calice di vino rosso accanto a una candela, sfondo notturno con vite',
+    imgPosition: 'object-center',
   },
   {
     nome: 'Radix',
@@ -33,6 +42,9 @@ const VINI: Vino[] = [
     annata: 'MMXIX',
     latino: 'Augusta Taurinorum',
     note: "Profondo come la pietra delle Langhe. Radici, terra rossa, legno antico. Un vino che non chiede — afferma.",
+    immagine: '/images/silentum.jpg',
+    imgAlt: 'Calice di vino con luce calda di candela su tavolo in legno',
+    imgPosition: 'object-left',
   },
   {
     nome: 'Ignis',
@@ -40,6 +52,9 @@ const VINI: Vino[] = [
     annata: 'MMXXII',
     latino: 'Trinacria',
     note: "Il sole vulcanico impresso nell'uva. Fuoco trattenuto, sale marino, fico maturo. La Sicilia in ogni goccia.",
+    immagine: '/images/ignis.jpg',
+    imgAlt: 'Calice di vino in controluce su sfondo nero, riflessi di fuoco arancio',
+    imgPosition: 'object-center',
   },
 ]
 
@@ -84,45 +99,50 @@ export default function ViniEtichette() {
               viewport={{ once: true }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* Elemento visivo — anfora + numero */}
+              {/* ── IMMAGINE ─────────────────────────────────── */}
               <div
                 className={`relative flex items-center justify-center ${
                   isEven ? '' : 'lg:col-start-2'
                 }`}
               >
-                <div className="relative w-48 h-64 md:w-56 md:h-72">
-                  {/* Numero romano decorativo di sfondo */}
+                <div className="relative w-56 h-72 md:w-64 md:h-80">
+
+                  {/* Numero romano decorativo */}
                   <span
-                    className="font-cinzel-deco absolute -top-8 -left-8 text-[8rem] font-black leading-none select-none"
+                    className="font-cinzel-deco absolute -top-8 -left-8 text-[8rem] font-black leading-none select-none pointer-events-none"
                     style={{ color: '#C8860A', opacity: 0.04 }}
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
 
-                  {/* Anfora */}
+                  {/* Foto vino */}
                   <div
                     className="relative w-full h-full overflow-hidden"
-                    style={{ border: '1px solid rgba(200,134,10,0.10)' }}
+                    style={{ border: '1px solid rgba(200,134,10,0.12)' }}
                   >
                     <Image
-                      src="/images/anfora-greca.jpg"
-                      alt={`Anfora — ${vino.nome}`}
+                      src={vino.immagine}
+                      alt={vino.imgAlt}
                       fill
-                      className="object-cover object-center"
-                      quality={80}
-                      sizes="(max-width: 768px) 192px, 224px"
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: 'rgba(7,7,7,0.30)' }}
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{ boxShadow: 'inset 0 0 50px rgba(7,7,7,0.7)' }}
+                      className={`object-cover ${vino.imgPosition ?? 'object-center'}`}
+                      quality={85}
+                      sizes="(max-width: 768px) 224px, 256px"
                     />
 
-                    {/* Nome sovrapposto */}
+                    {/* Overlay leggero — lascia respirare la foto */}
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: 'rgba(7,7,7,0.22)' }}
+                    />
+
+                    {/* Bordo interno ember */}
+                    <div
+                      className="absolute inset-0"
+                      style={{ boxShadow: 'inset 0 0 60px rgba(7,7,7,0.65)' }}
+                    />
+
+                    {/* Nome sovrapposto in basso */}
                     <div className="absolute bottom-5 left-5 right-5">
                       <span
                         className="font-cinzel text-[8px] tracking-[0.5em] uppercase block"
@@ -141,7 +161,7 @@ export default function ViniEtichette() {
                 </div>
               </div>
 
-              {/* Testo */}
+              {/* ── TESTO ─────────────────────────────────────── */}
               <div
                 className={`flex flex-col gap-6 ${
                   isEven ? '' : 'lg:col-start-1 lg:row-start-1'
@@ -174,7 +194,6 @@ export default function ViniEtichette() {
                   {vino.note}
                 </p>
 
-                {/* Tag territorio */}
                 <div className="flex items-center gap-3">
                   <div
                     className="h-[1px] w-6"
