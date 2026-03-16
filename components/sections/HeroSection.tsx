@@ -6,83 +6,123 @@ import NektarSymbol from '@/components/ui/NektarSymbol'
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '25%'])
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+
+  // Il video sale mentre si scrolla
+  const videoY       = useTransform(scrollYProgress, [0, 1],   ['0%', '30%'])
+  // Il video si dissolve prima che finisca la sezione
+  const videoOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0])
+  // Il contenuto (titolo, simbolo) scompare leggermente prima
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
 
   return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden" aria-label="Hero">
-      {/* Parallax background */}
-      <motion.div className="absolute inset-0 scale-110" style={{ y }}>
+    <section
+      ref={ref}
+      className="relative h-screen w-full overflow-hidden"
+      aria-label="Hero — Nektar Masseria"
+    >
+      {/* ── VIDEO + PARALLAX ─────────────────────────────── */}
+      <motion.div
+        className="absolute inset-0 scale-110"
+        style={{ y: videoY, opacity: videoOpacity }}
+        aria-hidden="true"
+      >
+        <video
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="auto"
+        >
+          <source src="/videos/hero-candle.mp4" type="video/mp4" />
+        </video>
+
+        {/* Overlay scuro — garantisce leggibilità del testo */}
         <div
-          className="h-full w-full"
+          className="absolute inset-0"
           style={{
-            background: `
-              radial-gradient(ellipse at 30% 60%, rgba(139,69,19,0.25) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 30%, rgba(212,175,55,0.08) 0%, transparent 50%),
-              linear-gradient(180deg, #080808 0%, #1a0f00 40%, #0d0800 100%)
-            `,
+            background:
+              'linear-gradient(180deg, rgba(7,7,7,0.45) 0%, rgba(7,7,7,0.1) 50%, rgba(7,7,7,0.75) 100%)',
           }}
         />
       </motion.div>
 
-      {/* Vignette */}
+      {/* ── VIGNETTE ─────────────────────────────────────── */}
       <div
         className="pointer-events-none absolute inset-0 z-10"
         style={{
           background: `
-            radial-gradient(ellipse at center, transparent 20%, rgba(8,8,8,0.7) 80%),
-            linear-gradient(180deg, rgba(8,8,8,0.6) 0%, transparent 30%, transparent 70%, #080808 100%)
+            radial-gradient(ellipse at center, transparent 20%, rgba(7,7,7,0.55) 80%),
+            linear-gradient(180deg, rgba(7,7,7,0.5) 0%, transparent 30%, transparent 70%, #070707 100%)
           `,
         }}
       />
 
-      {/* Content */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-6 px-6 text-center">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
-          <NektarSymbol size={60} />
+      {/* ── CONTENT ──────────────────────────────────────── */}
+      <motion.div
+        className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-6 px-6 text-center"
+        style={{ opacity: contentOpacity }}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
+          <NektarSymbol size={56} />
         </motion.div>
 
         <motion.h1
-          className="font-cinzel-deco text-6xl font-black tracking-[0.3em] uppercase md:text-8xl lg:text-9xl"
+          className="font-cinzel-deco text-6xl font-black uppercase md:text-8xl lg:text-9xl"
           style={{
-            color: '#d4af37',
-            textShadow: '0 0 60px rgba(212,175,55,0.2), 0 0 120px rgba(212,175,55,0.08)',
+            color: '#EAE6E0',
+            letterSpacing: '0.3em',
+            textShadow:
+              '0 0 60px rgba(232,160,32,0.18), 0 0 120px rgba(232,160,32,0.07)',
           }}
           initial={{ opacity: 0, letterSpacing: '0.8em' }}
           animate={{ opacity: 1, letterSpacing: '0.3em' }}
-          transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
         >
           NEKTAR
         </motion.h1>
 
         <motion.p
-          className="font-garamond text-sm tracking-[0.5em] uppercase"
-          style={{ color: '#6b6b6b' }}
+          className="font-garamond text-sm uppercase tracking-[0.5em]"
+          style={{ color: '#A8A49C' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1 }}
+          transition={{ duration: 1.5, delay: 1.6 }}
         >
           Masseria · Agriturismo
         </motion.p>
 
+        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-12 flex flex-col items-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 2 }}
+          transition={{ duration: 1.5, delay: 2.8 }}
           aria-hidden="true"
         >
-          <span className="font-cinzel text-[9px] tracking-[0.6em] uppercase" style={{ color: '#2a2a2a' }}>
+          <span
+            className="font-cinzel text-[9px] uppercase tracking-[0.6em]"
+            style={{ color: '#6B6760' }}
+          >
             Scorri
           </span>
           <motion.div
             className="h-12 w-[1px]"
-            style={{ background: 'linear-gradient(180deg, #d4af37, transparent)' }}
+            style={{ background: 'linear-gradient(180deg, #E8A020, transparent)' }}
             animate={{ scaleY: [0.2, 1, 0.2], opacity: [0.2, 0.8, 0.2] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
           />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -7,6 +7,7 @@ import HeroSection from '@/components/sections/HeroSection'
 import EssenzaSection from '@/components/sections/EssenzaSection'
 import TerritorioPreview from '@/components/sections/TerritorioPreview'
 import NektarFooter from '@/components/layout/NektarFooter'
+import NektarNavbar from '@/components/layout/NektarNavbar'
 
 
 export default function HomePage() {
@@ -18,6 +19,9 @@ export default function HomePage() {
         Il <main> sottostante è sempre nel DOM → crawlabile da subito.
       */}
       <CinematicIntro />
+      
+      {/* Navbar — fixed z-50, appare dopo l'intro */}
+      <NektarNavbar />
 
       <main className="relative overflow-x-hidden" style={{ background: '#080808' }}>
         <HeroSection />
