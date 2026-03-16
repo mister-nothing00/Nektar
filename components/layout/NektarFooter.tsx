@@ -6,17 +6,17 @@ export default function NektarFooter() {
   return (
     <footer
       className="relative py-12 text-center"
-      style={{ borderTop: '1px solid rgba(212,175,55,0.06)' }}
+      style={{ borderTop: '1px solid rgba(200,134,10,0.08)' }}
     >
       <div className="flex flex-col items-center gap-4">
         <NektarSymbol size={28} />
         <p
           className="font-cinzel text-[10px] tracking-[0.6em] uppercase"
-          style={{ color: '#2a2a2a' }}
+          style={{ color: '#6B6760' }}
         >
           Nektar — Masseria & Agriturismo
         </p>
-        <p className="font-garamond text-sm italic" style={{ color: '#1a1a1a' }}>
+        <p className="font-garamond text-sm italic" style={{ color: '#4A4742' }}>
           Umbria · Friuli · Torino · Sicilia
         </p>
       </div>
