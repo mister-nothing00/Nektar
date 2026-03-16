@@ -7,8 +7,10 @@ interface IntroContextValue {
   setIntroComplete: (v: boolean) => void
 }
 
-const IntroContext = createContext<IntroContextValue>({
-  introComplete: false,
+// Default: introComplete = true → sulle pagine senza IntroProvider
+// le animazioni partono normalmente senza aspettare nulla
+export const IntroContext = createContext<IntroContextValue>({
+  introComplete: true,
   setIntroComplete: () => {},
 })
 

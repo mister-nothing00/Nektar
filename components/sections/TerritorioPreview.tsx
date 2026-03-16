@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import StaggerReveal from '@/components/animations/StaggerReveal'
 
 interface Territory {
   name: string
@@ -20,7 +21,7 @@ export default function TerritorioPreview() {
   return (
     <section className="relative py-20 px-6 pb-48 overflow-hidden" aria-label="Le Origini">
 
-      {/* ── SFONDO — vigna-tramonto.jpg ─────────────────────────────────── */}
+      {/* ── SFONDO ───────────────────────────────────────── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
           src="/images/vigna-tramonto.jpg"
@@ -30,29 +31,19 @@ export default function TerritorioPreview() {
           quality={80}
           sizes="100vw"
         />
-        {/* Overlay obbligatorio — la foto è verde e luminosa, va domata */}
-        <div
-          className="absolute inset-0"
-          style={{ background: 'rgba(7,7,7,0.78)' }}
-        />
-        {/* Sfumatura verticale — fusione con Essenza sopra e footer sotto */}
+        <div className="absolute inset-0" style={{ background: 'rgba(7,7,7,0.78)' }} />
         <div
           className="absolute inset-0"
           style={{
-            background: `linear-gradient(180deg,
-              #070707 0%,
-              transparent 12%,
-              transparent 88%,
-              #070707 100%
-            )`,
+            background: 'linear-gradient(180deg, #070707 0%, transparent 12%, transparent 88%, #070707 100%)',
           }}
         />
       </div>
 
-      {/* ── CONTENUTO ────────────────────────────────────────────────────── */}
+      {/* ── CONTENUTO ────────────────────────────────────── */}
       <div className="relative z-10 mx-auto max-w-5xl">
 
-        {/* Intestazione sezione */}
+        {/* Intestazione */}
         <motion.div
           className="mb-20 text-center"
           initial={{ opacity: 0 }}
@@ -60,10 +51,7 @@ export default function TerritorioPreview() {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          <span
-            className="font-cinzel text-[10px] tracking-[0.7em] uppercase"
-            style={{ color: '#8B5E08' }}
-          >
+          <span className="font-cinzel text-[10px] tracking-[0.7em] uppercase" style={{ color: '#8B5E08' }}>
             Le Origini
           </span>
           <h2
@@ -74,8 +62,12 @@ export default function TerritorioPreview() {
           </h2>
         </motion.div>
 
-        {/* Card territori */}
-        <div className="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-4">
+        {/* Card — StaggerReveal è il grid, i figli sono div semplici */}
+        <StaggerReveal
+          className="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-4"
+          stagger={0.14}
+          direction="up"
+        >
           {TERRITORIES.map((t, i) => (
             <motion.div
               key={t.name}
@@ -86,13 +78,8 @@ export default function TerritorioPreview() {
                 borderBottom: '1px solid rgba(200,134,10,0.10)',
                 backdropFilter: 'blur(2px)',
               }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ background: 'rgba(14,14,14,0.88)' }}
             >
-              {/* Numero decorativo */}
               <span
                 className="font-cinzel-deco text-6xl font-black absolute bottom-4 right-4 select-none"
                 style={{ color: '#C8860A', opacity: 0.06 }}
@@ -102,40 +89,29 @@ export default function TerritorioPreview() {
               </span>
 
               <div>
-                <span
-                  className="font-cinzel text-[9px] tracking-[0.5em] uppercase"
-                  style={{ color: '#8B5E08' }}
-                >
+                <span className="font-cinzel text-[9px] tracking-[0.5em] uppercase" style={{ color: '#8B5E08' }}>
                   {t.latin}
                 </span>
-                <h3
-                  className="font-cinzel mt-2 text-2xl font-semibold tracking-[0.1em] uppercase"
-                  style={{ color: '#D4D0C8' }}
-                >
+                <h3 className="font-cinzel mt-2 text-2xl font-semibold tracking-[0.1em] uppercase" style={{ color: '#D4D0C8' }}>
                   {t.name}
                 </h3>
               </div>
 
-              <p
-                className="font-garamond text-base italic leading-7 mt-6"
-                style={{ color: '#6B6760' }}
-              >
+              <p className="font-garamond text-base italic leading-7 mt-6" style={{ color: '#6B6760' }}>
                 {t.desc}
               </p>
 
-              {/* Hover line ember */}
               <motion.div
                 className="absolute bottom-0 left-0 h-[1px] w-full origin-left"
-                style={{
-                  background: 'linear-gradient(90deg, #C8860A, transparent)',
-                }}
+                style={{ background: 'linear-gradient(90deg, #C8860A, transparent)' }}
                 initial={{ scaleX: 0 }}
                 whileHover={{ scaleX: 1 }}
                 transition={{ duration: 0.6 }}
               />
             </motion.div>
           ))}
-        </div>
+        </StaggerReveal>
+
       </div>
     </section>
   )
