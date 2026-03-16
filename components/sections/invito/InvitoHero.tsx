@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import NektarSymbol from '@/components/ui/NektarSymbol'
 
-export default function CantineHero() {
+export default function InvitoHero() {
   const ref = useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -13,15 +13,15 @@ export default function CantineHero() {
     offset: ['start start', 'end start'],
   })
 
-  const imgY        = useTransform(scrollYProgress, [0, 1],    ['0%', '25%'])
-  const imgOpacity  = useTransform(scrollYProgress, [0, 0.7],  [1, 0])
-  const textOpacity = useTransform(scrollYProgress, [0, 0.4],  [1, 0])
+  const imgY        = useTransform(scrollYProgress, [0, 1],   ['0%', '20%'])
+  const imgOpacity  = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
 
   return (
     <section
       ref={ref}
       className="relative h-screen w-full overflow-hidden"
-      aria-label="Cantina — Hero"
+      aria-label="Invito — Hero"
     >
       {/* ── IMMAGINE + PARALLAX ───────────────────────────── */}
       <motion.div
@@ -30,19 +30,24 @@ export default function CantineHero() {
         aria-hidden="true"
       >
         <Image
-          src="/images/cantina-archi.jpg"
-          alt="Cantina medievale con archi in pietra e grandi botti"
+          src="/images/candela-legno.jpg"
+          alt="Candela accesa su superficie in legno, sfondo nero"
           fill
           className="object-cover object-center"
           quality={90}
           sizes="100vw"
           priority
         />
+        {/* Overlay minimo — la foto è già quasi nera */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'rgba(7,7,7,0.45)' }}
+        />
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(7,7,7,0.35) 0%, rgba(7,7,7,0.05) 50%, rgba(7,7,7,0.8) 100%)',
+              'linear-gradient(180deg, rgba(7,7,7,0.6) 0%, transparent 35%, transparent 65%, #070707 100%)',
           }}
         />
       </motion.div>
@@ -51,10 +56,8 @@ export default function CantineHero() {
       <div
         className="pointer-events-none absolute inset-0 z-10"
         style={{
-          background: `
-            radial-gradient(ellipse at center, transparent 25%, rgba(7,7,7,0.6) 85%),
-            linear-gradient(180deg, rgba(7,7,7,0.55) 0%, transparent 30%, transparent 70%, #070707 100%)
-          `,
+          background:
+            'radial-gradient(ellipse at center, transparent 20%, rgba(7,7,7,0.7) 90%)',
         }}
       />
 
@@ -85,16 +88,15 @@ export default function CantineHero() {
           className="font-cinzel-deco text-5xl font-black uppercase tracking-[0.25em] md:text-7xl"
           style={{
             color: '#EAE6E0',
-            textShadow: '0 0 80px rgba(200,134,10,0.2)',
+            textShadow: '0 0 80px rgba(200,134,10,0.15)',
           }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
         >
-          La Cantina
+          L'Invito
         </motion.h1>
 
-        {/* ← fix: #6B6760 → #A8A49C — leggibile su sfondo scuro */}
         <motion.p
           className="font-garamond text-lg italic"
           style={{ color: '#A8A49C' }}
@@ -102,7 +104,7 @@ export default function CantineHero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.2 }}
         >
-          Dove la pietra custodisce il silenzio del tempo.
+          Se sei qui, sai già come trovarci.
         </motion.p>
 
         {/* Scroll indicator */}

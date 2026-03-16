@@ -7,14 +7,15 @@ import type { MouseEvent } from 'react'
 import NektarSymbol from '@/components/ui/NektarSymbol'
 
 const NAV_LINKS = [
-  { href: '/vini',       label: 'Vini'       },
-  { href: '/territorio', label: 'Territorio'  },
-  { href: '/cantina',    label: 'Cantina'    },
-  { href: '/invito',     label: 'Invito'     },
+  { href: '/vini',       label: 'Vini'      },
+  { href: '/territorio', label: 'Territorio' },
+  { href: '/cantina',    label: 'Cantina'   },
+  { href: '/invito',     label: 'Invito'    },
 ] as const
 
 export default function NektarNavbar() {
   const pathname = usePathname()
+  const isHome   = pathname === '/'
 
   const handleMouseEnter = (e: MouseEvent<HTMLAnchorElement>) => {
     e.currentTarget.style.color = '#EAE6E0'
@@ -31,10 +32,15 @@ export default function NektarNavbar() {
         background:
           'linear-gradient(180deg, rgba(7,7,7,0.96) 0%, rgba(7,7,7,0.0) 100%)',
       }}
-      // La navbar appare dopo la fine dell'intro cinematografico (~9.6s)
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.5, delay: 10, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 1.5,
+        // Sulla homepage aspetta la fine dell'intro (~9.6s)
+        // Sulle pagine interne appare subito
+        delay: isHome ? 10 : 0.3,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       aria-label="Navigazione principale"
     >
       {/* ── BRAND ────────────────────────────────────────── */}
