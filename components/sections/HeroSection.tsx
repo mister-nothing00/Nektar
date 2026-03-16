@@ -1,27 +1,42 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import NektarSymbol from '@/components/ui/NektarSymbol'
+import { useIntro } from '@/context/IntroContext'
 
 export default function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const videoRef   = useRef<HTMLVideoElement>(null)
 
+  const { introComplete } = useIntro()
+
+  // ── Avvia il video solo quando l'intro è terminata ────────────────────────
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    if (introComplete) {
+      video.currentTime = 0
+      video.play().catch(() => {})
+    } else {
+      video.pause()
+    }
+  }, [introComplete])
+
+  // ── Parallax + dissolve su scroll ────────────────────────────────────────
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: sectionRef,
     offset: ['start start', 'end start'],
   })
 
-  // Il video sale mentre si scrolla
-  const videoY       = useTransform(scrollYProgress, [0, 1],   ['0%', '30%'])
-  // Il video si dissolve prima che finisca la sezione
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0])
-  // Il contenuto (titolo, simbolo) scompare leggermente prima
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
+  const videoY         = useTransform(scrollYProgress, [0, 1],    ['0%', '30%'])
+  const videoOpacity   = useTransform(scrollYProgress, [0, 0.65], [1, 0])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.4],  [1, 0])
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       className="relative h-screen w-full overflow-hidden"
       aria-label="Hero — Nektar Masseria"
     >
@@ -32,17 +47,18 @@ export default function HeroSection() {
         aria-hidden="true"
       >
         <video
+          ref={videoRef}
           className="h-full w-full object-cover"
-          autoPlay
           muted
           playsInline
-          loop
           preload="auto"
+          // poster = frame statico mentre il video è in pausa durante l'intro
+          poster="/images/cantina-archi.jpg"
         >
           <source src="/videos/hero-candle.mp4" type="video/mp4" />
         </video>
 
-        {/* Overlay scuro — garantisce leggibilità del testo */}
+        {/* Overlay leggibilità */}
         <div
           className="absolute inset-0"
           style={{
@@ -70,7 +86,7 @@ export default function HeroSection() {
       >
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: introComplete ? 1 : 0 }}
           transition={{ duration: 1, delay: 0.4 }}
         >
           <NektarSymbol size={56} />
@@ -81,12 +97,11 @@ export default function HeroSection() {
           style={{
             color: '#EAE6E0',
             letterSpacing: '0.3em',
-            textShadow:
-              '0 0 60px rgba(232,160,32,0.18), 0 0 120px rgba(232,160,32,0.07)',
+            textShadow: '0 0 60px rgba(232,160,32,0.18), 0 0 120px rgba(232,160,32,0.07)',
           }}
           initial={{ opacity: 0, letterSpacing: '0.8em' }}
-          animate={{ opacity: 1, letterSpacing: '0.3em' }}
-          transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+          animate={introComplete ? { opacity: 1, letterSpacing: '0.3em' } : {}}
+          transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
         >
           NEKTAR
         </motion.h1>
@@ -95,8 +110,8 @@ export default function HeroSection() {
           className="font-garamond text-sm uppercase tracking-[0.5em]"
           style={{ color: '#A8A49C' }}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.6 }}
+          animate={introComplete ? { opacity: 1 } : {}}
+          transition={{ duration: 1.5, delay: 1.2 }}
         >
           Masseria · Agriturismo
         </motion.p>
@@ -105,8 +120,8 @@ export default function HeroSection() {
         <motion.div
           className="absolute bottom-12 flex flex-col items-center gap-3"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 2.8 }}
+          animate={introComplete ? { opacity: 1 } : {}}
+          transition={{ duration: 1.5, delay: 2 }}
           aria-hidden="true"
         >
           <span

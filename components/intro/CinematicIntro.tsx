@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useIntro } from '@/context/IntroContext'
 
 // ─── Tipi e costanti ───────────────────────────────────────────────────────────
 
@@ -17,7 +18,7 @@ const PHASE_DURATIONS: Record<Exclude<Phase, 'done'>, number> = {
   dissolve: 1600,
 }
 
-// ─── SVG locale (evita dipendenze cross-boundary in questa fase) ───────────────
+// ─── SVG locale ───────────────────────────────────────────────────────────────
 
 function IntroSymbol({ size = 100 }: { size?: number }) {
   return (
@@ -73,28 +74,41 @@ function LetterReveal({ text, delay = 0, stagger = 0.08, className = '' }: Lette
 
 export default function CinematicIntro() {
   const [phase, setPhase] = useState<Phase>('black')
+  const { setIntroComplete } = useIntro()
 
   useEffect(() => {
-    // TODO (step 3): rispetta prefers-reduced-motion → salta direttamente a 'done'
+    // prefers-reduced-motion → salta direttamente a done
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) {
+      setPhase('done')
+      setIntroComplete(true)
+      return
+    }
+
     let elapsed = 0
     const timers: ReturnType<typeof setTimeout>[] = []
 
     PHASE_SEQUENCE.slice(0, -1).forEach((p, i) => {
       elapsed += PHASE_DURATIONS[p as Exclude<Phase, 'done'>]
-      timers.push(setTimeout(() => setPhase(PHASE_SEQUENCE[i + 1]), elapsed))
+      timers.push(
+        setTimeout(() => {
+          const next = PHASE_SEQUENCE[i + 1]
+          setPhase(next)
+          // Quando arriviamo a 'done' segnaliamo al context
+          if (next === 'done') setIntroComplete(true)
+        }, elapsed)
+      )
     })
 
     return () => timers.forEach(clearTimeout)
-  }, [])
+  }, [setIntroComplete])
 
-  // Intro concluso — smonta il componente, il <main> emerge
   if (phase === 'done') return null
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
       style={{ background: '#080808' }}
-      // Nasconde il contenuto sottostante agli screen reader durante l'intro
       aria-hidden="true"
     >
       {/* Grain cinematografico */}
@@ -108,7 +122,6 @@ export default function CinematicIntro() {
 
       <AnimatePresence mode="wait">
 
-        {/* SYMBOL + TITLE + TAGLINE */}
         {(phase === 'symbol' || phase === 'title' || phase === 'tagline') && (
           <motion.div
             key="symbol-group"
@@ -167,7 +180,6 @@ export default function CinematicIntro() {
           </motion.div>
         )}
 
-        {/* DISSOLVE — schermo si riempie di nero, poi il componente smonta */}
         {phase === 'dissolve' && (
           <motion.div
             key="dissolve"
