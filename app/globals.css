@@ -27,6 +27,10 @@
   --font-cormorant:    var(--font-cormorant);
   --font-cormorant-sc: var(--font-cormorant-sc);
   --font-garamond:     var(--font-garamond);
+
+  /* --- ALIAS (i componenti usano queste classi) --- */
+  --font-cinzel:       var(--font-cormorant-sc);
+  --font-cinzel-deco:  var(--font-cormorant);
 }
 
 /* =============================================
@@ -49,7 +53,6 @@
    ============================================= */
 *, *::before, *::after {
   box-sizing: border-box;
- 
 }
 
 html {

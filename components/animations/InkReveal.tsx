@@ -1,11 +1,12 @@
 'use client'
 
+import type { CSSProperties } from 'react'   // ← fix: import esplicito del tipo
 import { motion } from 'framer-motion'
 
 interface InkRevealProps {
   text: string
   className?: string
-  style?: React.CSSProperties
+  style?: CSSProperties                    
   delay?: number
   stagger?: number
   byLetter?: boolean

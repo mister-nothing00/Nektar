@@ -3,16 +3,26 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
+import type { MouseEvent } from 'react'    // ← import esplicito
 
 const NAV_LINKS = [
-  { href: '/sanctum',   label: 'Scrolls'   },
-  { href: '/reliquiae', label: 'Reliquiae'  },
-  { href: '/visions',   label: 'Visions'   },
-  { href: '/chamber/obsidian', label: 'Chambers' },
+  { href: '/sanctum',          label: 'Scrolls'   },
+  { href: '/reliquiae',        label: 'Reliquiae' },
+  { href: '/visions',          label: 'Visions'   },
+  { href: '/chamber/obsidian', label: 'Chambers'  },
 ]
 
 export default function DarkNavbar() {
   const pathname = usePathname()
+
+  // ← fix: e.currentTarget è già HTMLAnchorElement, nessun cast necessario
+  const handleMouseEnter = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.color = '#c0c0c0'
+  }
+
+  const handleMouseLeave = (e: MouseEvent<HTMLAnchorElement>, active: boolean) => {
+    e.currentTarget.style.color = active ? '#d4af37' : '#6b6b6b'
+  }
 
   return (
     <motion.nav
@@ -52,8 +62,8 @@ export default function DarkNavbar() {
                 href={link.href}
                 className="font-cinzel relative text-[11px] tracking-[0.3em] uppercase transition-colors duration-500"
                 style={{ color: active ? '#d4af37' : '#6b6b6b' }}
-                onMouseEnter={e => { (e.target as HTMLElement).style.color = '#c0c0c0' }}
-                onMouseLeave={e => { (e.target as HTMLElement).style.color = active ? '#d4af37' : '#6b6b6b' }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={e => handleMouseLeave(e, active)}
               >
                 {link.label}
                 {active && (
