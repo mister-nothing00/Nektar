@@ -11,7 +11,7 @@ export default function EssenzaSection() {
       {/* ── SFONDO — calice-botti.jpg ─────────────────────────────────────── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src="/images/calice-botti.jpg"
+          src="/images/calice-botti.png"
           alt=""
           fill
           className="object-cover object-center"
