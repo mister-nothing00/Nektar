@@ -16,7 +16,7 @@ export default function CantineStoria() {
             style={{ border: '1px solid rgba(200,134,10,0.08)' }}
           >
             <Image
-              src="/images/anfore-cantina.jpg"
+              src="/images/anfore-cantina.webp"
               alt="Anfore allineate in una cantina ad arco illuminata da luce calda"
               fill
               className="object-cover object-center"

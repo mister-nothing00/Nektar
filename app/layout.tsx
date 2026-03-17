@@ -52,13 +52,13 @@ export const metadata: Metadata = {
     siteName: 'Nektar',
     title: 'Nektar — Masseria & Agriturismo',
     description: "Dalla terra agli dei. Quattro territori, un'unica anima.",
-    images: [{ url: 'https://nektar-nu.vercel.app/images/cantina-archi.jpg', width: 1200, height: 630, alt: 'Nektar — Cantina medievale' }],
+    images: [{ url: 'https://nektar-nu.vercel.app/images/cantina-archi.webp', width: 1200, height: 630, alt: 'Nektar — Cantina medievale' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Nektar — Masseria & Agriturismo',
     description: "Dalla terra agli dei. Quattro territori, un'unica anima.",
-    images: ['https://nektar-nu.vercel.app/images/cantina-archi.jpg'],
+    images: ['https://nektar-nu.vercel.app/images/cantina-archi.webp'],
   },
   alternates: { canonical: 'https://nektar-nu.vercel.app/' },
 }
@@ -83,7 +83,7 @@ const jsonLd = {
         { '@type': 'State', name: 'Piemonte' },
         { '@type': 'State', name: 'Sicilia' },
       ],
-      image: 'https://nektar-nu.vercel.app/images/cantina-archi.jpg',
+      image: 'https://nektar-nu.vercel.app/images/cantina-archi.webp',
       priceRange: '€€€€',
     },
     {

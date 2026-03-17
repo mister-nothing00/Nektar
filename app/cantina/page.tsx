@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'La Cantina — Nektar',
     description: 'Dove la pietra custodisce il silenzio del tempo.',
     url: 'https://nektar-nu.vercel.app/cantina',
-    images: [{ url: 'https://nektar-nu.vercel.app/images/cantina-archi.jpg', width: 1200, height: 630, alt: 'Cantina Nektar' }],
+    images: [{ url: 'https://nektar-nu.vercel.app/images/cantina-archi.webp', width: 1200, height: 630, alt: 'Cantina Nektar' }],
   },
   alternates: { canonical: 'https://nektar-nu.vercel.app/cantina' },
 }

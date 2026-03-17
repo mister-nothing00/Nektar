@@ -30,7 +30,7 @@ export default function TerritorioHero() {
         aria-hidden="true"
       >
         <Image
-          src="/images/vigna-tramonto.jpg"
+          src="/images/vigna-tramonto.webp"
           alt="Vigna al tramonto con calice di vino bianco su tavolo in legno"
           fill
           className="object-cover object-center"

@@ -30,7 +30,7 @@ export default function ViniHero() {
         aria-hidden="true"
       >
         <Image
-          src="/images/enoteca-arco.jpg"
+          src="/images/enoteca-arco.webp"
           alt="Enoteca con arco in pietra e scaffali di bottiglie illuminate"
           fill
           className="object-cover object-center"

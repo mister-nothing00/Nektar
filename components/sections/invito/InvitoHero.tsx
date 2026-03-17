@@ -30,7 +30,7 @@ export default function InvitoHero() {
         aria-hidden="true"
       >
         <Image
-          src="/images/candela-legno.jpg"
+          src="/images/candela-legno.webp"
           alt="Candela accesa su superficie in legno, sfondo nero"
           fill
           className="object-cover object-center"

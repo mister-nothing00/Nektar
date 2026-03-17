@@ -75,13 +75,13 @@ export default function CantineProfondita() {
           </div>
         </RevealOnScroll>
 
-        {/* ── IMMAGINE — tunnel-bottiglie.jpg ──────────────── */}
+        {/* ── IMMAGINE — tunnel-bottiglie──────────────── */}
         <RevealOnScroll direction="right" delay={0.2}>
           <div className="relative h-[600px] w-full overflow-hidden"
             style={{ border: '1px solid rgba(200,134,10,0.08)' }}
           >
             <Image
-              src="/images/tunnel-bottiglie.jpg"
+              src="/images/tunnel-bottiglie.webp"
               alt="Tunnel di bottiglie in cantina con luce arancio intensa"
               fill
               className="object-cover object-center"

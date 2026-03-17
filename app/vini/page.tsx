@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'I Vini — Nektar',
     description: "Non etichette. Memorie di terra.",
     url: 'https://nektar-nu.vercel.app/vini',
-    images: [{ url: 'https://nektar-nu.vercel.app/images/enoteca-arco.jpg', width: 1200, height: 630, alt: 'I Vini Nektar' }],
+    images: [{ url: 'https://nektar-nu.vercel.app/images/enoteca-arco.webp', width: 1200, height: 630, alt: 'I Vini Nektar' }],
   },
   alternates: { canonical: 'https://nektar-nu.vercel.app/vini' },
 }

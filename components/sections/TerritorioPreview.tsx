@@ -21,10 +21,10 @@ export default function TerritorioPreview() {
   return (
     <section className="relative py-20 px-6 pb-48 overflow-hidden" aria-label="Le Origini">
 
-      {/* ── SFONDO — vigna-tramonto.jpg ─────────────────────────────────── */}
+      {/* ── SFONDO — vigna-tramonto ─────────────────────────────────── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src="/images/vigna-tramonto.jpg"
+          src="/images/vigna-tramonto.webp"
           alt=""
           fill
           className="object-cover object-center"

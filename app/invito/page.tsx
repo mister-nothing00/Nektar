@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "L'Invito — Nektar",
     description: 'Se sei qui, sai già come trovarci.',
     url: 'https://nektar-nu.vercel.app/invito',
-    images: [{ url: 'https://nektar-nu.vercel.app/images/candela-legno.jpg', width: 1200, height: 630, alt: "L'Invito Nektar" }],
+    images: [{ url: 'https://nektar-nu.vercel.app/images/candela-legno.webp', width: 1200, height: 630, alt: "L'Invito Nektar" }],
   },
   alternates: { canonical: 'https://nektar-nu.vercel.app/invito' },
 }

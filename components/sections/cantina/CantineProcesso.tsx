@@ -16,10 +16,10 @@ export default function CantineProcesso() {
   return (
     <section className="relative py-32 px-6 overflow-hidden" aria-label="Il Processo">
 
-      {/* ── SFONDO — cantina-fisheye.jpg ─────────────────── */}
+      {/* ── SFONDO — cantina-fisheye ─────────────────── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src="/images/cantina-fisheye.jpg"
+          src="/images/cantina-fisheye.webp"
           alt=""
           fill
           className="object-cover object-center"

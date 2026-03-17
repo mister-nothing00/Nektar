@@ -31,7 +31,7 @@ export default function CantineHero() {
         aria-hidden="true"
       >
         <Image
-          src="/images/cantina-archi.jpg"
+          src="/images/cantina-archi.webp"
           alt="Cantina medievale con archi in pietra e grandi botti"
           fill
           className="object-cover object-center"

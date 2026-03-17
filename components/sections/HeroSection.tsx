@@ -53,7 +53,7 @@ export default function HeroSection() {
           playsInline
           preload="auto"
           // poster = frame statico mentre il video è in pausa durante l'intro
-          poster="/images/cantina-archi.jpg"
+          poster="/images/cantina-archi.webp"
         >
           <source src="/videos/hero-candle.webm" type="video/webm" />
         </video>
