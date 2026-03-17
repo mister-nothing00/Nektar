@@ -26,22 +26,29 @@ const ebGaramond = EB_Garamond({
 })
 
 /* =============================================
-   METADATA BASE — ereditata da tutte le pagine
+   BASE URL — funziona sia in locale che su Vercel
+   ============================================= */
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000'
+
+/* =============================================
+   METADATA BASE
    ============================================= */
 export const metadata: Metadata = {
-  metadataBase: new URL(''),
+  metadataBase: new URL(baseUrl),
   title: {
     default: 'Nektar — Masseria & Agriturismo',
     template: '%s — Nektar',
   },
   description: 'Dalla terra agli dei. Masseria e agriturismo vinicolo con radici in Umbria, Friuli, Torino e Sicilia. Lusso silenzioso, piacere ancestrale.',
   keywords: ['nektar', 'masseria', 'agriturismo', 'vino', 'cantina', 'degustazione', 'Umbria', 'Friuli', 'Sicilia', 'Torino'],
-  authors: [{ name: 'Francesco Davide di Vita' }],
+  authors: [{ name: 'Nektar' }],
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
     locale: 'it_IT',
-    url: '',
+    url: 'https://nektar.it',
     siteName: 'Nektar',
     title: 'Nektar — Masseria & Agriturismo',
     description: "Dalla terra agli dei. Quattro territori, un'unica anima.",
@@ -53,7 +60,7 @@ export const metadata: Metadata = {
     description: "Dalla terra agli dei. Quattro territori, un'unica anima.",
     images: ['/images/cantina-archi.jpg'],
   },
-  alternates: { canonical: '' },
+  alternates: { canonical: 'https://nektar.it' },
 }
 
 /* =============================================
@@ -67,7 +74,7 @@ const jsonLd = {
       '@id': 'https://nektar.it/#winery',
       name: 'Nektar — Masseria & Agriturismo',
       description: 'Masseria e agriturismo vinicolo con radici in Umbria, Friuli Venezia Giulia, Torino e Sicilia.',
-      url: '',
+      url: 'https://nektar.it',
       email: 'invito@nektar.it',
       foundingDate: '2025',
       areaServed: [
@@ -76,7 +83,7 @@ const jsonLd = {
         { '@type': 'State', name: 'Piemonte' },
         { '@type': 'State', name: 'Sicilia' },
       ],
-      image: '/images/cantina-archi.jpg',
+      image: 'https://nektar.it/images/cantina-archi.jpg',
       priceRange: '€€€€',
     },
     {
