@@ -55,7 +55,7 @@ export default function HeroSection() {
           // poster = frame statico mentre il video è in pausa durante l'intro
           poster="/images/cantina-archi.jpg"
         >
-          <source src="/videos/hero-candle.mp4" type="video/mp4" />
+          <source src="/videos/hero-candle.webm" type="video/webm" />
         </video>
 
         {/* Overlay leggibilità */}

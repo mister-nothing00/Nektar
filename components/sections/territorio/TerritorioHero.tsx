@@ -85,7 +85,7 @@ export default function TerritorioHero() {
         </motion.span>
 
         <motion.h1
-          className="font-cinzel-deco text-5xl font-black uppercase tracking-[0.25em] md:text-7xl"
+          className="font-cinzel-deco text-[44px] font-black uppercase tracking-[0.18em] md:tracking-[0.25em] md:text-7xl"
           style={{
             color: '#EAE6E0',
             textShadow: '0 0 80px rgba(200,134,10,0.2)',

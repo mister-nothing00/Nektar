@@ -143,7 +143,7 @@ export default function CinematicIntro() {
             {(phase === 'title' || phase === 'tagline') && (
               <motion.div className="flex flex-col items-center gap-6">
                 <h2
-                  className="font-cinzel-deco text-7xl font-black tracking-[0.5em] uppercase md:text-8xl"
+                  className="font-cinzel-deco text-5xl font-black tracking-[0.5em] uppercase md:text-8xl "
                   style={{ color: '#d4af37', textShadow: '0 0 40px rgba(212,175,55,0.3)' }}
                 >
                   <LetterReveal text="NEKTAR" stagger={0.15} />
