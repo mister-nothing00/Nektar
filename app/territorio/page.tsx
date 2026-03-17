@@ -1,4 +1,3 @@
-// Server Component — nessun 'use client'
 
 import { Metadata } from 'next'
 import NektarNavbar         from '@/components/layout/NektarNavbar'
@@ -14,10 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Il Territorio — Nektar',
     description: 'Quattro radici. Una sola anima.',
-    url: 'https://nektar.it/territorio',
-    images: [{ url: '/images/vigna-tramonto.jpg', width: 1200, height: 630, alt: 'Territorio Nektar' }],
+    url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/territorio',
+    images: [{ url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/images/vigna-tramonto.jpg', width: 1200, height: 630, alt: 'Territorio Nektar' }],
   },
-  alternates: { canonical: 'https://nektar.it/territorio' },
+  alternates: { canonical: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/territorio' },
 }
 
 export default function TerritorioPage() {

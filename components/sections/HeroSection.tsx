@@ -11,7 +11,7 @@ export default function HeroSection() {
 
   const { introComplete } = useIntro()
 
-  // ── Avvia il video solo quando l'intro è terminata ────────────────────────
+ // ── Gestione intro cinematografico — controllo del video in base allo stato dell'intro
   useEffect(() => {
     const video = videoRef.current
     if (!video) return

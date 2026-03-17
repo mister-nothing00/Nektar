@@ -1,6 +1,6 @@
 'use client'
 
-import type { CSSProperties } from 'react'   // ← fix: import esplicito del tipo
+import type { CSSProperties } from 'react'  
 import { motion } from 'framer-motion'
 
 interface InkRevealProps {
@@ -12,6 +12,7 @@ interface InkRevealProps {
   byLetter?: boolean
 }
 
+// Componente per animare la rivelazione del testo con effetto "inchiostro" — utilizza framer-motion per animare ogni parola o lettera
 export default function InkReveal({
   text,
   className = '',

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import NektarSymbol from '@/components/ui/NektarSymbol'
 
+// Componente Hero per la pagina Cantina — full-screen, con immagine di sfondo, titolo, sottotitolo e indicatore di scroll, e animazioni parallax e di dissolvenza basate sullo scroll
 export default function CantineHero() {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -94,7 +95,6 @@ export default function CantineHero() {
           La Cantina
         </motion.h1>
 
-        {/* ← fix: #6B6760 → #A8A49C — leggibile su sfondo scuro */}
         <motion.p
           className="font-garamond text-lg italic"
           style={{ color: '#A8A49C' }}

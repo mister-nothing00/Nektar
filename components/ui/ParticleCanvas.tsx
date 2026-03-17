@@ -16,6 +16,7 @@ interface Particle {
 
 const COLORS = ['#d4af37', '#c9a84c', '#c0c0c0', '#a8a9ad', '#f5d76e', '#8b6914']
 
+// Componente per il canvas con particelle che salgono lentamente, con colori caldi e un effetto di dissolvenza — utilizza l'API Canvas e animazioni frame-by-frame per creare un'atmosfera magica e coinvolgente, perfetta per il sito di Nektar
 export default function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 

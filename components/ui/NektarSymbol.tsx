@@ -5,6 +5,8 @@ interface NektarSymbolProps {
   className?: string
 }
 
+
+// Componente SVG per il simbolo di Nektar — cerchi concentrici, linee e un punto centrale, con un design elegante e minimalista che richiama l'idea di un calice stilizzato
 export default function NektarSymbol({ size = 80, className = '' }: NektarSymbolProps) {
   return (
     <svg

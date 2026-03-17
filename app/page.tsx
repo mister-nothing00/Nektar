@@ -10,7 +10,6 @@ import NektarFooter         from '@/components/layout/NektarFooter'
 
 export default function HomePage() {
   return (
-    // IntroProvider è 'use client' ma wrappa Server Components — Next.js lo gestisce correttamente
     <IntroProvider>
       {/* Overlay cinematografico — fixed z-50, ritorna null quando concluso */}
       <CinematicIntro />

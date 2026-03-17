@@ -16,6 +16,7 @@ const TERRITORIES: Territory[] = [
   { name: 'Sicilia', latin: 'Trinacria',           desc: 'Terra di fuoco e sale. Il sole impresso nel calice.' },
 ]
 
+// Componente per la sezione di preview del Territorio — card con numero decorativo, titolo, claim e descrizione evocativa, con animazioni di rivelazione e un design che anticipa il resto della sezione
 export default function TerritorioPreview() {
   return (
     <section className="relative py-20 px-6 pb-48 overflow-hidden" aria-label="Le Origini">

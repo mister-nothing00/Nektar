@@ -15,6 +15,7 @@ interface RevealOnScrollProps {
 
 const EASE_CINEMATIC = [0.22, 1, 0.36, 1] as const
 
+// Componente per animare la rivelazione di un elemento quando entra in viewport — utilizza framer-motion e useInView
 export default function RevealOnScroll({
   children,
   className = '',

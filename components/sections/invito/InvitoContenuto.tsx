@@ -108,7 +108,7 @@ export default function InvitoContenuto() {
             la tua presenza, scrivi direttamente a:
           </p>
 
-          {/* Email — elemento centrale, sobrio */}
+          {/* Email  */}
           <motion.a
             href="mailto:invito@nektar.it"
             className="font-cinzel text-sm tracking-[0.3em] uppercase transition-colors duration-500"

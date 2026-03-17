@@ -1,4 +1,4 @@
-// Server Component — nessun 'use client'
+
 import { Metadata } from 'next'
 import NektarNavbar     from '@/components/layout/NektarNavbar'
 import NektarFooter     from '@/components/layout/NektarFooter'
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'I Vini — Nektar',
     description: "Non etichette. Memorie di terra.",
-    url: 'https://nektar.it/vini',
-    images: [{ url: '/images/enoteca-arco.jpg', width: 1200, height: 630, alt: 'I Vini Nektar' }],
+    url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/vini',
+    images: [{ url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/images/enoteca-arco.jpg', width: 1200, height: 630, alt: 'I Vini Nektar' }],
   },
-  alternates: { canonical: 'https://nektar.it/vini' },
+  alternates: { canonical: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/vini' },
 }
 
 

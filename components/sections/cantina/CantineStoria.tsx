@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import RevealOnScroll from '@/components/animations/RevealOnScroll'
 
 export default function CantineStoria() {
@@ -10,7 +9,7 @@ export default function CantineStoria() {
 
       <div className="mx-auto max-w-6xl grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
 
-        {/* ── IMMAGINE — anfore-cantina.jpg ────────────────── */}
+        {/* ── IMMAGINE ────────────────── */}
         <RevealOnScroll direction="left">
           <div
             className="relative h-[500px] w-full overflow-hidden"
@@ -24,7 +23,7 @@ export default function CantineStoria() {
               quality={85}
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            {/* Overlay leggero — l'immagine è già scura, lasciamola respirare */}
+            {/* Overlay  */}
             <div
               className="absolute inset-0"
               style={{ background: 'rgba(7,7,7,0.25)' }}

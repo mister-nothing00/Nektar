@@ -38,7 +38,7 @@ export default function TerritorioHero() {
           sizes="100vw"
           priority
         />
-        {/* Overlay obbligatorio — foto luminosa e verde */}
+        {/* Overlay */}
         <div
           className="absolute inset-0"
           style={{ background: 'rgba(7,7,7,0.65)' }}

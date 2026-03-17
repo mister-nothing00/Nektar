@@ -37,6 +37,7 @@ const itemVariants = (direction: string, distance: number) => {
   }
 }
 
+// Componente per animare la rivelazione di più elementi con un effetto a cascata — utilizza framer-motion e useInView, e si integra con lo stato dell'intro cinematografico
 export default function StaggerReveal({
   children,
   className = '',

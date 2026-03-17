@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import NektarSymbol from '@/components/ui/NektarSymbol'
 
+// Componente di chiusura per la sezione Territorio — citazione evocativa, con animazioni di rivelazione e un design coerente con il resto del sito
 export default function TerritorioChiusura() {
   return (
     <section className="relative py-48 px-6" aria-label="Chiusura Territorio">

@@ -1,7 +1,7 @@
-// Server Component — markup statico, nessun hook
 
 import NektarSymbol from '@/components/ui/NektarSymbol'
 
+// Componente footer per tutte le pagine — semplice, elegante, con il simbolo Nektar e le informazioni di base
 export default function NektarFooter() {
   return (
     <footer

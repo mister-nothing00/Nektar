@@ -47,6 +47,7 @@ const REGIONI: Regione[] = [
   },
 ]
 
+// Componente per la sezione Regioni del Territorio — layout a due colonne, con numero decorativo, titolo, claim e dettagli tecnici, e un corpo testo che racconta l'essenza di ogni regione vitivinicola
 export default function TerritorioRegioni() {
   return (
     <section className="relative py-12 px-6" aria-label="Le Regioni">

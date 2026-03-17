@@ -2,6 +2,7 @@
 
 import { useScroll, useSpring, motion } from 'framer-motion'
 
+// Componente per la barra di progresso dello scroll — una linea sottile che si riemp
 export default function ScrollProgressBar() {
   const { scrollYProgress } = useScroll()
 

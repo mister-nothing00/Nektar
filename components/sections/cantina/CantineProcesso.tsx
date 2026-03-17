@@ -1,5 +1,3 @@
-// ─── CantineProcesso.tsx ──────────────────────────────────────────────────────
-// Sfondo: cantina-fisheye.jpg — botti simmetriche, prospettiva centrale
 
 'use client'
 

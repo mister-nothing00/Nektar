@@ -8,7 +8,7 @@ export default function EssenzaSection() {
   return (
     <section className="relative py-48 px-6 overflow-hidden" aria-label="L'Essenza">
 
-      {/* ── SFONDO — calice-botti.jpg ─────────────────────────────────────── */}
+      {/* ── SFONDO ─────────────────────────────────────── */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
           src="/images/calice-botti.png"
@@ -18,7 +18,7 @@ export default function EssenzaSection() {
           quality={85}
           sizes="100vw"
         />
-        {/* Overlay principale — testo deve emergere */}
+        {/* Overlay principale */}
         <div
           className="absolute inset-0"
           style={{ background: 'rgba(7,7,7,0.82)' }}
