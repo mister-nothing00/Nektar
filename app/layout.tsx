@@ -48,19 +48,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'it_IT',
-    url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/',
+    url: 'https://nektar-nu.vercel.app/',
     siteName: 'Nektar',
     title: 'Nektar — Masseria & Agriturismo',
     description: "Dalla terra agli dei. Quattro territori, un'unica anima.",
-    images: [{ url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/images/cantina-archi.jpg', width: 1200, height: 630, alt: 'Nektar — Cantina medievale' }],
+    images: [{ url: 'https://nektar-nu.vercel.app/images/cantina-archi.jpg', width: 1200, height: 630, alt: 'Nektar — Cantina medievale' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Nektar — Masseria & Agriturismo',
     description: "Dalla terra agli dei. Quattro territori, un'unica anima.",
-    images: ['https://nektar-git-development-francescos-projects-3c47c947.vercel.app/images/cantina-archi.jpg'],
+    images: ['https://nektar-nu.vercel.app/images/cantina-archi.jpg'],
   },
-  alternates: { canonical: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/' },
+  alternates: { canonical: 'https://nektar-nu.vercel.app/' },
 }
 
 /* =============================================
@@ -71,10 +71,10 @@ const jsonLd = {
   '@graph': [
     {
       '@type': ['LocalBusiness', 'Winery'],
-      '@id': 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/#winery',
+      '@id': 'https://nektar-nu.vercel.app/#winery',
       name: 'Nektar — Masseria & Agriturismo',
       description: 'Masseria e agriturismo vinicolo con radici in Umbria, Friuli Venezia Giulia, Torino e Sicilia.',
-      url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/',
+      url: 'https://nektar-nu.vercel.app/',
       email: 'invito@nektar.it',
       foundingDate: '2025',
       areaServed: [
@@ -83,16 +83,16 @@ const jsonLd = {
         { '@type': 'State', name: 'Piemonte' },
         { '@type': 'State', name: 'Sicilia' },
       ],
-      image: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/images/cantina-archi.jpg',
+      image: 'https://nektar-nu.vercel.app/images/cantina-archi.jpg',
       priceRange: '€€€€',
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/#website',
-      url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/',
+      '@id': 'https://nektar-nu.vercel.app/#website',
+      url: 'https://nektar-nu.vercel.app/',
       name: 'Nektar',
       inLanguage: 'it-IT',
-      publisher: { '@id': 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/#winery' },
+      publisher: { '@id': 'https://nektar-nu.vercel.app/#winery' },
     },
   ],
 }

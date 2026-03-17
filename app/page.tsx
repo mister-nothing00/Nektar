@@ -8,6 +8,7 @@ import EssenzaSection       from '@/components/sections/EssenzaSection'
 import TerritorioPreview    from '@/components/sections/TerritorioPreview'
 import NektarFooter         from '@/components/layout/NektarFooter'
 
+
 export default function HomePage() {
   return (
     <IntroProvider>

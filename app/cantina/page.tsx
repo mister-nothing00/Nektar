@@ -15,10 +15,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'La Cantina — Nektar',
     description: 'Dove la pietra custodisce il silenzio del tempo.',
-    url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/cantina',
-    images: [{ url: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/images/cantina-archi.jpg', width: 1200, height: 630, alt: 'Cantina Nektar' }],
+    url: 'https://nektar-nu.vercel.app/cantina',
+    images: [{ url: 'https://nektar-nu.vercel.app/images/cantina-archi.jpg', width: 1200, height: 630, alt: 'Cantina Nektar' }],
   },
-  alternates: { canonical: 'https://nektar-git-development-francescos-projects-3c47c947.vercel.app/cantina' },
+  alternates: { canonical: 'https://nektar-nu.vercel.app/cantina' },
 }
 
 export default function CantinaPage() {
