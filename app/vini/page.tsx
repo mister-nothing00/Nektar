@@ -1,10 +1,24 @@
 // Server Component — nessun 'use client'
-
+import { Metadata } from 'next'
 import NektarNavbar     from '@/components/layout/NektarNavbar'
 import NektarFooter     from '@/components/layout/NektarFooter'
 import ViniHero         from '@/components/sections/vini/ViniHero'
 import ViniEtichette    from '@/components/sections/vini/ViniEtichette'
 import ViniFilosofia    from '@/components/sections/vini/ViniFilosofia'
+
+
+export const metadata: Metadata = {
+  title: 'I Vini',
+  description: 'Non etichette. Memorie di terra. Silentium, Glacies, Radix, Ignis — quattro vini, quattro territori, un\'unica anima.',
+  openGraph: {
+    title: 'I Vini — Nektar',
+    description: "Non etichette. Memorie di terra.",
+    url: 'https://nektar.it/vini',
+    images: [{ url: '/images/enoteca-arco.jpg', width: 1200, height: 630, alt: 'I Vini Nektar' }],
+  },
+  alternates: { canonical: 'https://nektar.it/vini' },
+}
+
 
 export default function ViniPage() {
   return (
