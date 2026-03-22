@@ -11,12 +11,14 @@ type Phase = 'black' | 'symbol' | 'title' | 'tagline' | 'dissolve' | 'done'
 const PHASE_SEQUENCE: Phase[] = ['black', 'symbol', 'title', 'tagline', 'dissolve', 'done']
 
 const PHASE_DURATIONS: Record<Exclude<Phase, 'done'>, number> = {
-  black:    1200,
-  symbol:   1800,
-  title:    2200,
-  tagline:  2800,
-  dissolve: 1600,
+  black:    600,   // era 1200 — il nero puro non serve così lungo
+  symbol:   1200,  // era 1800
+  title:    1600,  // era 2200
+  tagline:  2000,  // era 2800
+  dissolve: 1000,  // era 1600
 }
+
+const SESSION_KEY = 'nektar_intro_seen'
 
 // ─── SVG locale ───────────────────────────────────────────────────────────────
 
@@ -77,13 +79,23 @@ export default function CinematicIntro() {
   const { setIntroComplete } = useIntro()
 
   useEffect(() => {
-    // prefers-reduced-motion → salta direttamente a done
+    // 1. prefers-reduced-motion → salta a done
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) {
       setPhase('done')
       setIntroComplete(true)
       return
     }
+
+    // 2. Già vista in questa sessione → salta a done
+    if (sessionStorage.getItem(SESSION_KEY)) {
+      setPhase('done')
+      setIntroComplete(true)
+      return
+    }
+
+    // 3. Prima visita — esegui l'intro e segna come vista
+    sessionStorage.setItem(SESSION_KEY, '1')
 
     let elapsed = 0
     const timers: ReturnType<typeof setTimeout>[] = []
@@ -94,7 +106,6 @@ export default function CinematicIntro() {
         setTimeout(() => {
           const next = PHASE_SEQUENCE[i + 1]
           setPhase(next)
-          // Quando arriviamo a 'done' segnaliamo al context
           if (next === 'done') setIntroComplete(true)
         }, elapsed)
       )
@@ -143,7 +154,7 @@ export default function CinematicIntro() {
             {(phase === 'title' || phase === 'tagline') && (
               <motion.div className="flex flex-col items-center gap-6">
                 <h2
-                  className="font-cinzel-deco text-5xl font-black tracking-[0.5em] uppercase md:text-8xl "
+                  className="font-cinzel-deco text-5xl font-black tracking-[0.5em] uppercase md:text-8xl"
                   style={{ color: '#d4af37', textShadow: '0 0 40px rgba(212,175,55,0.3)' }}
                 >
                   <LetterReveal text="NEKTAR" stagger={0.15} />
@@ -187,7 +198,7 @@ export default function CinematicIntro() {
             style={{ background: '#080808' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.6, ease: 'easeInOut' }}
+            transition={{ duration: 1, ease: 'easeInOut' }}
           />
         )}
 

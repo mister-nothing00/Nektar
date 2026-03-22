@@ -11,7 +11,7 @@ export default function HeroSection() {
 
   const { introComplete } = useIntro()
 
- // ── Gestione intro cinematografico — controllo del video in base allo stato dell'intro
+  // ── Controllo video intro ───────────────────────────────────────────────
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
@@ -51,8 +51,7 @@ export default function HeroSection() {
           className="h-full w-full object-cover"
           muted
           playsInline
-          preload="auto"
-          // poster = frame statico mentre il video è in pausa durante l'intro
+          preload="none"                          
           poster="/images/cantina-archi.webp"
         >
           <source src="/videos/hero-candle.webm" type="video/webm" />
