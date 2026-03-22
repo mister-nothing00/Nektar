@@ -90,7 +90,7 @@ export default function EssenzaSection() {
           transition={{ duration: 1.2, delay: 0.5 }}
         >
           Non produciamo vino. Custodimo il tempo.<br />
-          Quattro terre, un'unica radice — profonda come la pietra,<br />
+          Quattro terre, un'unica radice, profonda come la pietra,<br />
           silenziosa come la cantina al tramonto.
         </motion.p>
 

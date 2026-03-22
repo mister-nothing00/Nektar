@@ -67,7 +67,7 @@ export default function CantineStoria() {
             >
               Non esistono archivi che ne attestino l'inizio.
               La cantina era già lì quando i primi vignaioli portarono
-              le anfore dalla Sicilia verso nord — un viaggio che
+              le anfore dalla Sicilia verso nord, un viaggio che
               il vino ricorda ancora oggi.
             </p>
 

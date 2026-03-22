@@ -63,7 +63,7 @@ export default function InvitoContenuto() {
             transition={{ duration: 1.2, delay: 0.5 }}
           >
             Le degustazioni Nektar non si prenotano.
-            Non si acquistano. Si ricevono — attraverso
+            Non si acquistano. Si ricevono, attraverso
             un invito personale, esteso a chi condivide
             la nostra visione del piacere silenzioso.
           </motion.p>
@@ -78,7 +78,7 @@ export default function InvitoContenuto() {
           >
             Ogni incontro è unico. Ogni tavola è diversa.
             Ogni bottiglia aperta è un rito che non si ripete mai uguale.
-            Il numero di ospiti è sempre limitato — perché
+            Il numero di ospiti è sempre limitato, perché
             il lusso vero è lo spazio, il silenzio, l'attenzione.
           </motion.p>
 
@@ -130,7 +130,7 @@ export default function InvitoContenuto() {
             style={{ color: '#4A4742' }}
           >
             Nektar risponde personalmente a ogni messaggio.
-            I tempi di risposta riflettono il nostro ritmo — lento, intenzionale.
+            I tempi di risposta riflettono il nostro ritmo, lento, intenzionale.
           </p>
 
         </RevealOnScroll>

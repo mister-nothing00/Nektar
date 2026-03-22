@@ -43,10 +43,13 @@ export default function NektarNavbar() {
           background: 'linear-gradient(180deg, rgba(7,7,7,0.96) 0%, rgba(7,7,7,0.0) 100%)',
         }}
         initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{
+          opacity: (!isHome || introComplete) ? 1 : 0,
+          y:       (!isHome || introComplete) ? 0 : -10,
+        }}
         transition={{
           duration: 1.5,
-          delay: navDelay,
+          delay: 0.3,
           ease: [0.22, 1, 0.36, 1],
         }}
         aria-label="Navigazione principale"

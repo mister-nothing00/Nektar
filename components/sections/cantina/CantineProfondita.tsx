@@ -39,7 +39,7 @@ export default function CantineProfondita() {
               style={{ color: '#A8A49C' }}
             >
               Scendere in cantina non è un gesto ordinario.
-              È un attraversamento — dalla luce del giorno
+              È un attraversamento, dalla luce del giorno
               all'oscurità che custodisce il futuro.
             </p>
 
