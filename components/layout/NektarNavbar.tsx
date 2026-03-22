@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { MouseEvent } from 'react'
 import NektarSymbol from '@/components/ui/NektarSymbol'
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
+import { useIntro } from '@/context/IntroContext'
 
 const NAV_LINKS = [
   { href: '/vini',       label: 'Vini'       },
@@ -19,6 +20,10 @@ export default function NektarNavbar() {
   const pathname  = usePathname()
   const isHome    = pathname === '/'
   const [open, setOpen] = useState(false)
+  const { introComplete } = useIntro()
+
+  // Su homepage aspetta l'intro — sulle altre pagine appare subito
+  const navDelay = isHome ? (introComplete ? 0.3 : 999) : 0.3
 
   const handleMouseEnter = (e: MouseEvent<HTMLAnchorElement>) => {
     e.currentTarget.style.color = '#EAE6E0'
@@ -41,7 +46,7 @@ export default function NektarNavbar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{
           duration: 1.5,
-          delay: isHome ? 10 : 0.3,
+          delay: navDelay,
           ease: [0.22, 1, 0.36, 1],
         }}
         aria-label="Navigazione principale"
@@ -131,7 +136,6 @@ export default function NektarNavbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: 'easeInOut' }}
           >
-            {/* Grain cinematografico — coerente con CinematicIntro */}
             <div
               className="pointer-events-none absolute inset-0 opacity-[0.03]"
               style={{
@@ -140,7 +144,6 @@ export default function NektarNavbar() {
               }}
             />
 
-            {/* Divisore ornamentale in cima */}
             <motion.div
               className="absolute top-24 left-1/2 -translate-x-1/2 flex items-center gap-4 w-48"
               initial={{ opacity: 0, scaleX: 0 }}
@@ -152,7 +155,6 @@ export default function NektarNavbar() {
               <div className="flex-1 h-[1px]" style={{ background: 'linear-gradient(90deg, #C8860A, transparent)' }} />
             </motion.div>
 
-            {/* Links */}
             <nav aria-label="Menu mobile">
               <ul className="flex flex-col items-center gap-10">
                 {NAV_LINKS.map((link, i) => {
@@ -184,7 +186,6 @@ export default function NektarNavbar() {
               </ul>
             </nav>
 
-            {/* Divisore ornamentale in fondo */}
             <motion.div
               className="absolute bottom-12 flex flex-col items-center gap-3"
               initial={{ opacity: 0 }}
