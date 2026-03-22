@@ -35,16 +35,21 @@
 
 /* =============================================
    CSS CUSTOM PROPERTIES
+   Le variabili --color-* di @theme vengono
+   esposte automaticamente come var(--color-*)
+   da Tailwind v4 — qui definiamo solo gli alias
+   brevi usati negli stili globali e nei componenti
+   che non usano classi Tailwind.
    ============================================= */
 :root {
-  --void:       #070707;
-  --deep:       #0e0e0e;
-  --stone:      #181818;
-  --silver:     #D4D0C8;
-  --silver-ice: #EAE6E0;
-  --fire:       #E8A020;
-  --ember:      #C8860A;
-  --smoke:      rgba(200,134,10,0.10);
+  --void:       var(--color-void);
+  --deep:       var(--color-deep);
+  --stone:      var(--color-stone);
+  --silver:     var(--color-silver);
+  --silver-ice: var(--color-silver-ice);
+  --fire:       var(--color-fire);
+  --ember:      var(--color-ember);
+  --smoke:      var(--color-smoke);
   --fog:        rgba(212,208,200,0.04);
 }
 
