@@ -1,6 +1,17 @@
 {
   "name": "nektar",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Nektar — Luxury winery and agriturismo brand website. Cinematic, invitation-only, built with Next.js, TypeScript, Tailwind v4 and Framer Motion.",
+  "author": {
+    "name": "Francesco Davide di Vita",
+    "url": "https://github.com/mister-nothing00"
+  },
+  "homepage": "https://nektar-nu.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mister-nothing00/Nektar.git"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -23,5 +34,20 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "framer-motion",
+    "luxury",
+    "winery",
+    "agriturismo",
+    "landing-page",
+    "cinematic",
+    "wine"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
