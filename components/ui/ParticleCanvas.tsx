@@ -16,7 +16,6 @@ interface Particle {
 
 const COLORS = ['#d4af37', '#c9a84c', '#c0c0c0', '#a8a9ad', '#f5d76e', '#8b6914']
 
-// Componente per il canvas con particelle che salgono lentamente, con colori caldi e un effetto di dissolvenza — utilizza l'API Canvas e animazioni frame-by-frame per creare un'atmosfera magica e coinvolgente, perfetta per il sito di Nektar
 export default function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -27,35 +26,46 @@ export default function ParticleCanvas() {
     if (!ctx) return
 
     let animId: number
+    let isVisible = true  // Stato di visibilità del canvas per ottimizzare le prestazioni
     const particles: Particle[] = []
 
+    // ── Resize ────────────────────────────────────────────
     const resize = () => {
-      canvas.width = window.innerWidth
+      canvas.width  = window.innerWidth
       canvas.height = window.innerHeight
     }
     resize()
     window.addEventListener('resize', resize)
 
+    // ── Factory particella ────────────────────────────────
     const createParticle = (): Particle => ({
-      x: Math.random() * canvas.width,
-      y: canvas.height + 10,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: -(Math.random() * 0.6 + 0.15),
-      size: Math.random() * 1.8 + 0.2,
+      x:       Math.random() * canvas.width,
+      y:       canvas.height + 10,
+      vx:      (Math.random() - 0.5) * 0.4,
+      vy:      -(Math.random() * 0.6 + 0.15),
+      size:    Math.random() * 1.8 + 0.2,
       opacity: 0,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      life: 0,
+      color:   COLORS[Math.floor(Math.random() * COLORS.length)],
+      life:    0,
       maxLife: Math.random() * 400 + 200,
     })
 
+    // Spawn iniziale distribuito nel viewport
     for (let i = 0; i < 100; i++) {
       const p = createParticle()
-      p.y = Math.random() * canvas.height
+      p.y    = Math.random() * canvas.height
       p.life = Math.random() * p.maxLife
       particles.push(p)
     }
 
+   // ── Animazione ─────────────────────────────────────────
     const animate = () => {
+      // Se il canvas non è visibile, salta l'animazione per risparmiare risorse
+      if (!isVisible) {
+        animId = requestAnimationFrame(animate)
+        return
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((p, i) => {
@@ -88,9 +98,18 @@ export default function ParticleCanvas() {
 
     animate()
 
+    // Osservatore visibilità per ottimizzare le prestazioni quando il canvas è fuori schermo
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting },
+      { threshold: 0 }
+    )
+    observer.observe(canvas)
+
+    // Pulizia alla dismissione del componente
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
+      observer.disconnect()
     }
   }, [])
 
