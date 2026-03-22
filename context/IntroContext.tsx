@@ -7,14 +7,21 @@ interface IntroContextValue {
   setIntroComplete: (v: boolean) => void
 }
 
-// Contesto per gestire lo stato dell'intro cinematografico — permette di sapere se l'intro è completa e di aggiornare questo stato, in modo che altri componenti possano reagire di conseguenza (es. avviare animazioni o video solo dopo l'intro)
+const SESSION_KEY = 'nektar_intro_seen'
+
+// Context per gestire lo stato dell'intro (completa o no)
 export const IntroContext = createContext<IntroContextValue>({
   introComplete: true,
   setIntroComplete: () => {},
 })
 
 export function IntroProvider({ children }: { children: React.ReactNode }) {
-  const [introComplete, setIntroComplete] = useState(false)
+  const [introComplete, setIntroComplete] = useState<boolean>(() => {
+// Inizialmente, controlla se l'intro è già stata vista in questa sessione
+    if (typeof window === 'undefined') return false
+// Se è stata vista, restituisce true; altrimenti false
+    return !!sessionStorage.getItem(SESSION_KEY)
+  })
 
   return (
     <IntroContext.Provider value={{ introComplete, setIntroComplete }}>
